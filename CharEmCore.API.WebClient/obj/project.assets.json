@@ -10716,10 +10716,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aaron\\OneDrive\\Documents\\Visual Studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\CharEmCore.API.WebClient.csproj",
+      "projectUniqueName": "C:\\Users\\aaron\\onedrive\\documents\\visual studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\CharEmCore.API.WebClient.csproj",
       "projectName": "CharEmCore.API.WebClient",
-      "projectPath": "C:\\Users\\aaron\\OneDrive\\Documents\\Visual Studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\CharEmCore.API.WebClient.csproj",
-      "outputPath": "C:\\Users\\aaron\\OneDrive\\Documents\\Visual Studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\obj\\",
+      "projectPath": "C:\\Users\\aaron\\onedrive\\documents\\visual studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\CharEmCore.API.WebClient.csproj",
+      "outputPath": "C:\\Users\\aaron\\onedrive\\documents\\visual studio 2017\\Projects\\CharEmCore.WebClient\\CharEmCore.API.WebClient\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

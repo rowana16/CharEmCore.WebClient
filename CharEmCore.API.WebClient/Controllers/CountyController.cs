@@ -43,15 +43,15 @@ namespace CharEmCore.API.WebClient.Controllers
         // GET: County/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var model = new CountyViewModel();
+            var model = new County();
 
             HttpResponseMessage requestResponse = await _client.GetAsync("api/county/" + id);
 
             if (requestResponse.IsSuccessStatusCode)
             {
                 string requestContent = await requestResponse.Content.ReadAsStringAsync();
-                var requestObject = JsonConvert.DeserializeObject<IEnumerable<County>>(requestContent);
-                model.Counties = requestObject.ToList();
+                var requestObject = JsonConvert.DeserializeObject<County>(requestContent);
+                model = requestObject ;
             }
 
             return View(model);
@@ -66,12 +66,12 @@ namespace CharEmCore.API.WebClient.Controllers
         // POST: County/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CountyViewModel county)
+        public async Task<ActionResult> Create(County county)
         {
             try
             {
                 var serializedItem = JsonConvert.SerializeObject(county);
-                HttpContent serializedContent = new StringContent(serializedItem, System.Text.Encoding.Unicode, "appliation/json");
+                HttpContent serializedContent = new StringContent(serializedItem, System.Text.Encoding.Unicode, "application/json");
                 var response = await _client.PostAsync("api/county/", serializedContent);
 
                 if (response.IsSuccessStatusCode)
@@ -111,15 +111,11 @@ namespace CharEmCore.API.WebClient.Controllers
         public async Task<ActionResult> EditAsync(int id, County county)
         {
             try
-            {
-                JsonPatchDocument<CountyDTO> patchDoc = new JsonPatchDocument<CountyDTO>();
-                patchDoc.Replace(x => x.Id, county.Id);
-                patchDoc.Replace(x => x.Name, county.Name);
-
-                var serializedUpdate = JsonConvert.SerializeObject(patchDoc);
+            {                               
+                var serializedUpdate = JsonConvert.SerializeObject(county);
                 var content = new StringContent(serializedUpdate, Encoding.Unicode, "application/json");
 
-                var response = await _client.PatchAsync("api/county/" + id, content);
+                var response = await _client.PutAsync("api/county/" + id, content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -134,9 +130,10 @@ namespace CharEmCore.API.WebClient.Controllers
         }
 
         // GET: County/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var model = await Details(id);
+            return (model);
         }
 
         // POST: County/Delete/5
