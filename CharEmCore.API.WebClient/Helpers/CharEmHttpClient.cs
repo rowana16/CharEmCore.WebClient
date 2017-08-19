@@ -19,5 +19,16 @@ namespace CharEmCore.API.WebClient.Helpers
             return client;
 
         }
+
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
+        {
+            var method = new HttpMethod("PATCH");
+            var request = new HttpRequestMessage(method, requestUri)
+            {
+                Content = content
+            };
+
+            return client.SendAsync(request);
+        }
     }
 }
